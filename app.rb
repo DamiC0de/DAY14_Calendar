@@ -12,21 +12,39 @@ require_relative 'lib/event'
 # Tu peux faire User.new, Event.new, binding.pry, User.all, etc.
 
 # Création d'une nouvelle instance de la classe User avec l'email et l'âge de Julie
-julie = User.new("julie@email.com", 32)
+User.new("julie@email.com", 32)
+User.new("jean@jean.com", 23)
+User.new("claude@claude.com", 75)
   
   
-# Affichage de toutes les instances de la classe User stockées dans @@all_users
-puts User.all.inspect
+# # Affichage de toutes les instances de la classe User stockées dans @@all_users
+# puts User.all.inspect
 
-
-# This method postpones the start date of the event by 24 hours
-def postpone_24h
-    @start_date += (24 * 60 * 60)
-end
 
 
 event = Event.new("2023-04-24 14:00", 30, "standup quotidien", ["truc@machin.com", "bidule@chose.fr"])
-puts "Original Start Date: #{event.start_date.inspect}"
 
-event.postpone_24h
-puts "Postponed Start Date: #{event.start_date.inspect}"
+# puts "Original Start Date: #{event.start_date.inspect}"
+
+# event.postpone_24h
+# puts "Postponed Start Date: #{event.start_date.inspect}"
+
+# event.end_date
+# puts "Date de fin : #{event.end_date.inspect}"
+
+# event.is_past?
+# puts "L'événement est-il passé ? #{event.is_past?}"
+
+# event.is_future?
+# puts "L'événement est-il dans le futur ? #{event.is_future?}"
+
+# event.is_soon?
+# puts "L'événement commence-t-il bientôt ? #{event.is_soon?}"
+
+event.to_s
+
+#On cherche un des user à partir de son e-mail
+user_1 = User.find_by_email("claude@claude.com")
+
+#On peut ensuite utiliser ce user comme on veut. Par exemple pour afficher son age:
+puts "Voici l'age du User trouvé : #{user_1.age}"

@@ -20,5 +20,13 @@ class User
       # Renvoie le tableau @@all_users
       @@all_users
     end
+
+    # Méthode de classe pour trouver un utilisateur par adresse e-mail
+    def self.find_by_email(email)
+      # Recherche dans le tableau @@all_users l'instance dont l'attribut @email correspond à l'adresse e-mail donnée
+      user_found = @@all_users.find { |user| user.email == email }
+      # Retourne l'objet User trouvé ou nil si aucun utilisateur ne correspond
+      user_found
+    end
   end
   
